@@ -1,0 +1,27 @@
+schema_version: 1
+profile:
+  display_name: Rjochi
+  github_username: Rjochi
+  headline:
+    en: "Robotics / Autonomous Systems"
+    ja: "ロボティクス / 自律システム"
+  summary:
+    en: null
+    ja: "創価大学理工学研究科情報システム工学専攻の大学院生。Team SOBITS所属。関心分野はロボティクスと自律システム。"
+  team:
+    name: "Team SOBITS"
+    url: "https://github.com/TeamSOBITS"
+  public_contact: null
+  reviewed_by_owner: true
+site:
+  origin: https://rjochi.github.io
+  base_path: /Rjochi/
+  primary_locale: ja
+  enabled_locales:
+    - en
+    - ja
+  deployment_enabled: true
+presentation:
+  theme_default: dark
+  readme_motion: once
+  allow_third_party_tracking: false

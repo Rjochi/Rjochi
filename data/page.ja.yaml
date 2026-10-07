@@ -1,0 +1,55 @@
+# 日本語ページの共通文言。文章だけを変える場合、Astro/TypeScriptの編集は不要です。
+# 自己紹介は profile.yaml、取り組みの説明は projects.yaml にあります。
+meta:
+  title_suffix: プロフィール
+  fallback_name: Profile
+  fallback_headline: ロボティクス / 自律システム
+navigation:
+  skip: 本文へ移動
+  label: ページ内の移動
+  demo: デモ
+  github: GitHub
+  new_tab: （新しいタブ）
+profile:
+  team_label: 所属チーム：
+demo:
+  title: 宇宙ロボットの自律移動のデモ
+  description: 宇宙ステーション内で障害物を回避する経路を探索し、角をなめらかにして移動します。
+  image_description: 2つの障害物を避けて進む、なめらかな三次元の経路。独立した幾何学デモ。
+  canvas_description: 障害物を避ける三次元の曲線軌道
+  phase_label: 探索、曲線化、移動の順に再生
+  phases:
+    search: 経路探索
+    refine: 軌道最適化
+    playback: 移動
+  note: 上のデモは、経路探索・軌道の曲線化・移動の流れを示す幾何学的な可視化です。以下で説明する研究のうち、推力や機体特性を考慮した軌道生成・制御は再現していません。
+  fallback_note: 一部の角は安全な折れ線を維持しています。
+  controls:
+    play: 再生する
+    pause: 一時停止
+    replay: もう一度再生
+    restart: 最初から再生
+    retry: 再試行
+  status:
+    initial: 検証済みの曲線経路
+    search: 障害物を避ける経路を探索
+    refine: なめらかな曲線軌道を生成
+    playback: 軌道に沿って移動
+    complete: 移動が完了
+    fallback: 静止図で軌道を表示しています
+    reduced_motion: 動きを抑えた静止表示
+explanation:
+  title: 研究で扱う自律移動のしくみ
+  steps:
+    - title: 経路を探す
+      body: ロボットの大きさと障害物との余裕幅を考慮し、3次元の格子上でA*探索を行います。
+    - title: 経路から最適な軌道を生成
+      body: 経路を短縮し、ロボットの推力や機体特性を考慮して、最適な速度で移動できる軌道を生成します。
+    - title: 軌道に沿って移動
+      body: 生成された軌道にある速度や加速度の情報をもとに、ロボットを制御して移動します。
+work:
+  title: 代表的な取り組み
+focus:
+  title: 現在の関心
+footer:
+  draft: 制作中のプレビュー

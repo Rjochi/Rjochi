@@ -1,0 +1,90 @@
+---
+import { loadContent, loadScene } from "../content/load";
+import { findPath } from "../demo/path";
+import { renderHeroSvg } from "../render/hero";
+
+const content = loadContent(import.meta.env.PROFILE_MODE === "release" ? "release" : "draft");
+const scene = loadScene();
+const demoPath = findPath(scene, scene.clearance_presets[1] ?? scene.clearance_presets[0]);
+const demoPaths = Object.fromEntries(scene.clearance_presets.map((clearance) => {
+  const result = findPath(scene, clearance);
+  return [String(clearance), { rawPath: result.rawPath, simplifiedPath: result.simplifiedPath }];
+}));
+const heroSvg = renderHeroSvg(scene, demoPath);
+const runtimeHeroSvg = heroSvg.replaceAll('id="search-path"', 'id="runtime-search-path"').replaceAll('id="refined-path"', 'id="runtime-refined-path"').replaceAll('id="obstacle-envelope"', 'id="runtime-obstacle-envelope"').replaceAll('id="playback-marker"', 'id="runtime-playback-marker"');
+const { profile, projects, focus, snapshot } = content;
+const headline = profile.headline.en ?? profile.headline.ja ?? "Robotics / Autonomous Systems";
+const summary = profile.summary.en ?? profile.summary.ja;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={headline} />
+    <meta name="robots" content={content.mode === "draft" ? "noindex, nofollow" : "index, follow"} />
+    <title>{profile.displayName ?? "GitHub Profile"}</title>
+    <style>
+      :root { color-scheme: light; --background: #f7fafc; --surface: #ffffff; --text: #142238; --muted: #42566f; --accent: #006b62; --line: #c3cfdc; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--background); color: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; line-height: 1.65; }
+      main { max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; }
+      header, section { border-top: 1px solid var(--line); padding: 28px 0; }
+      header { border-top: 0; padding-top: 0; }
+      .eyebrow, dt { color: var(--accent); font: 700 0.78rem/1.2 ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+      h1 { max-width: 720px; margin: 10px 0 16px; font-size: clamp(2.5rem, 7vw, 5.4rem); line-height: 0.98; letter-spacing: 0; }
+      h2 { margin: 0 0 16px; font-size: 1.4rem; }
+      p { max-width: 65ch; color: var(--muted); }
+      .draft { display: inline-block; border: 1px solid var(--accent); color: var(--accent); padding: 4px 8px; font: 700 0.75rem ui-monospace, monospace; }
+      .work { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+      article { background: var(--surface); border: 1px solid var(--line); padding: 18px; }
+      article h3 { margin: 0; }
+      .hero { margin-top: 28px; overflow: hidden; border: 1px solid var(--line); }
+      .hero svg { display: block; width: 100%; height: auto; }
+      nav { display: flex; gap: 16px; margin-top: 16px; }
+      a { color: var(--accent); }
+      .demo-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; }
+      .demo-controls button, .demo-controls select { min-height: 44px; border: 1px solid var(--line); background: var(--surface); color: var(--text); padding: 8px 12px; font: inherit; }
+      .demo-controls button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+      .demo-controls label { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--muted); }
+      .demo-status { min-height: 1.65em; margin: 10px 0 0; font: 0.85rem ui-monospace, monospace; }
+      .demo-runtime { margin-top: 14px; min-height: 360px; border: 1px solid var(--line); background: #0b1220; }
+      .runtime-poster, .runtime-poster svg { display: block; width: 100%; height: auto; }
+      .demo-runtime canvas { display: block; width: 100%; height: 360px; }
+      dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+      dd { margin: 0; color: var(--muted); }
+      @media (prefers-color-scheme: dark) { :root { color-scheme: dark; --background: #0b1220; --surface: #111b2a; --text: #e8eef8; --muted: #a9b8cc; --accent: #5de2d1; --line: #344359; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="eyebrow">{headline}</span>
+        <h1>{profile.displayName ?? "Profile in progress"}</h1>
+        {summary && <p>{summary}</p>}
+        {content.mode === "draft" && <span class="draft">DRAFT / SAMPLE DATA</span>}
+        <div id="planning-poster" class="hero" set:html={heroSvg}></div>
+        <nav aria-label="Language switch"><a href={import.meta.env.BASE_URL}>日本語</a></nav>
+      </header>
+      <section class="planning-demo" data-planning-demo data-scene={JSON.stringify(scene)} data-path={JSON.stringify(demoPath.simplifiedPath)} data-paths={JSON.stringify(demoPaths)} aria-labelledby="demo-title">
+        <h2 id="demo-title">Planning demonstrator</h2>
+        <div class="demo-controls" role="group" aria-label="Planning demonstrator controls">
+          <button type="button" data-stage="search" aria-pressed="false">Search</button>
+          <button type="button" data-stage="refined" aria-pressed="true">Refined</button>
+          <button type="button" data-stage="playback" aria-pressed="false">Playback</button>
+          <label>Clearance <select data-clearance aria-label="Clearance preset">{scene.clearance_presets.map((clearance) => <option value={clearance}>{clearance.toFixed(2)} demo-units</option>)}</select></label>
+          <label><input type="checkbox" data-envelope checked /> Show envelope</label>
+          <button type="button" data-reset>Reset</button>
+          <button type="button" data-static>Static view</button>
+          <button type="button" data-3d-play>3D Play</button>
+        </div>
+        <p class="demo-status" data-demo-status aria-live="polite">Precomputed geometric demonstration · Refined path</p>
+        <div class="demo-runtime" data-demo-runtime><div class="runtime-poster" set:html={runtimeHeroSvg}></div></div>
+      </section>
+      <section aria-labelledby="focus-title"><h2 id="focus-title">Current focus</h2><p>{focus.en ?? focus.ja ?? "Content awaiting owner review."}</p></section>
+      <section aria-labelledby="work-title"><h2 id="work-title">Selected work</h2>{projects.length > 0 ? <div class="work">{projects.map((project) => <article><h3>{project.title.en ?? project.title.ja}</h3></article>)}</div> : <p>No reviewed projects are published yet.</p>}</section>
+      {snapshot.asOfDateUtc && snapshot.repositories.length > 0 && <section aria-labelledby="snapshot-title"><h2 id="snapshot-title">Public repository snapshot</h2><dl><dt>As of</dt><dd>{snapshot.asOfDateUtc} (UTC)</dd><dt>Repositories</dt><dd>{snapshot.repositories.length}</dd></dl></section>}
+    </main>
+    <script>import "../client/demo-controls";</script>
+  </body>
+</html>

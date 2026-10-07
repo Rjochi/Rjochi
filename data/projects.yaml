@@ -1,0 +1,53 @@
+schema_version: 1
+projects:
+  - id: sobits_intball2_gnc
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "微重力空間での自律移動" }
+    description: { en: null, ja: "JAXAのInt-Ball2シミュレータを対象に、微重力空間での三次元自律移動と宇宙飛行士の検知・回避に取り組むパッケージ。humble-develでは、上の幾何学デモに関連する経路計画・軌道追従の研究を進めています。Team SOBITSがRoboCup Japan Open 2026 @Space Challengeで優勝した際に使用したのは、noetic-develの実装です。" }
+    repository: sobits_intball2_gnc
+    branch: humble-devel
+    url: https://github.com/TeamSOBITS/sobits_intball2_gnc/tree/humble-devel
+    reference:
+      label: "大会で使用した実装（noetic-devel）"
+      url: https://github.com/TeamSOBITS/sobits_intball2_gnc/tree/noetic-devel
+  - id: intball2_common
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "宇宙ロボットの制御インターフェース" }
+    description: { en: null, ja: "JAXAのInt-Ball2シミュレータ上のロボットを、外部のROS 2プログラムから制御するための共通パッケージ。" }
+    repository: intball2_common
+    branch: humble-devel
+    url: https://github.com/TeamSOBITS/intball2_common/tree/humble-devel
+  - id: int-ball2_platform_works
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "ROS 1 / ROS 2をつなぐ開発環境" }
+    description: { en: null, ja: "ROS 1で動作するInt-Ball2シミュレータとROS 2のユーザープログラムをつなぐDocker環境。メッセージやActionの橋渡しと、コンテナ内でのプログラム開発に対応。" }
+    repository: int-ball2_platform_works
+    branch: humble-bridge
+    url: https://github.com/TeamSOBITS/int-ball2_platform_works/tree/humble-bridge
+  - id: sobits_speech_recognition
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "ローカル音声認識のROS 2統合" }
+    description: { en: null, ja: "ローカルPCで動作する音声認識モデルを、ROS 2のActionインターフェースで利用するためのパッケージ。Whisper・VOSKなど、複数の認識エンジンに対応。" }
+    repository: sobits_speech_recognition
+    branch: jazzy-devel
+    url: https://github.com/TeamSOBITS/sobits_speech_recognition/tree/jazzy-devel
+  - id: sobits_tts
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "ローカル音声合成のROS 2統合" }
+    description: { en: null, ja: "ローカルPCで動作する音声合成モデルを、ROS 2のActionインターフェースで利用するためのパッケージ。複数のTTSエンジンをロボットの発話に利用。" }
+    repository: sobits_tts
+    branch: jazzy-devel
+    url: https://github.com/TeamSOBITS/sobits_tts/tree/jazzy-devel
+  - id: esp32_display
+    publish: true
+    reviewed_by_owner: true
+    title: { en: null, ja: "ロボットの頭部ディスプレイ制御" }
+    description: { en: null, ja: "ESP32を介して頭部ディスプレイを制御。PCと通信していないときは目のまばたきを表示し、通信時は任意の画像を指定時間だけ表示します。発話・音声認識の使用を自動検知し、スピーカー・マイクのアイコンで状態を伝えます。" }
+    repository: esp32_display
+    branch: jazzy-devel
+    url: https://github.com/TeamSOBITS/esp32_display/tree/jazzy-devel
