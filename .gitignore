@@ -1,0 +1,32 @@
+cat > .gitignore <<'EOF'
+# dependencies
+node_modules/
+
+# Astro build
+dist/
+.astro/
+
+# test / coverage
+coverage/
+playwright-report/
+test-results/
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# generated / temporary
+build/
+.tmp/
+temp/
+EOF
