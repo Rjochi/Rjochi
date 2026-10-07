@@ -1,0 +1,17 @@
+schema_version: 1
+id: signature-draft
+status: draft
+units: demo-units
+workspace:
+  min: [0, 0, 0]
+  max: [12, 8, 4]
+grid_step: 0.25
+robot_radius: 0.18
+clearance_presets: [0.10, 0.20, 0.30]
+start: [0.875, 1.125, 1.375]
+goal: [11.125, 6.875, 3.125]
+obstacles:
+  - min: [3.0, 0.0, 0.0]
+    max: [4.25, 4.5, 2.8]
+  - min: [7.5, 3.5, 0.0]
+    max: [8.75, 8.0, 2.8]
