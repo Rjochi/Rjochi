@@ -1,6 +1,13 @@
-<!-- Generated from data/ and templates/readme.md. Edit source files, then run npm run profile:render. -->
+<p align="left">
+  <a href="https://github.com/Rjochi">
+    <img height="20" src="https://komarev.com/ghpvc/?username=Rjochi" />
+  </a>
+  <a href="https://github.com/Rjochi">
+    <img height="20" src="https://img.shields.io/github/followers/Rjochi?label=follow&logo=github&style=flat" />
+  </a>
+</p>
 
-# Rjochi
+# Ryo Jochi
 
 創価大学理工学研究科情報システム工学専攻の大学院生。Team SOBITS所属。関心分野はロボティクスと自律システム。
 
