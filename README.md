@@ -22,7 +22,7 @@
 ## 代表的な取り組み
 
 - **微重力空間での自律移動**（sobits_intball2_gnc）
-  - JAXAのInt-Ball2シミュレータを対象に、微重力空間での三次元自律移動と宇宙飛行士の検知・回避に取り組むパッケージ
+  - 国際宇宙ステーション（ISS）の日本実験棟「きぼう」内を飛ぶ、JAXAの船内ドローン「Int-Ball2」のシミュレータを対象に、微重力空間での三次元自律移動と宇宙飛行士の検知・回避に取り組むパッケージ
   - [humble-devel](https://github.com/TeamSOBITS/sobits_intball2_gnc/tree/humble-devel)（ROS 2）: MINCOによる宇宙飛行士の回避
     <br><img src="./assets/projects/intball2-autonomous-navigation.gif" alt="MINCOによる宇宙飛行士の回避（2倍速）" width="480">
   - [noetic-devel](https://github.com/TeamSOBITS/sobits_intball2_gnc/tree/noetic-devel)（ROS 1）: 大会で使用した実装
