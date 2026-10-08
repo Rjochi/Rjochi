@@ -62,8 +62,8 @@ demo:
 
 ## 日本語README
 
-GitHubプロフィールのREADMEは `templates/readme.md` と既存のプロフィール・取り組みデータから生成します。取り組みの本文は `description.ja` の最初の一文を使い、選択ブランチと補足リンクはPagesと共通です。`focus.ja` が空の場合、「現在の関心」の欄は表示しません。
+GitHubプロフィールのREADMEは `templates/readme.md` を直接書いて管理します。プレースホルダーは使わず、本文をそのまま書きます（取り組みの一覧、スキルアイコン、画像は `assets/projects/` に置きます）。`README.md` は `templates/readme.md` と同じ内容のコピーです。
 
-READMEの3Dデモは `assets/generated/profile-demo.gif` です。Three.jsの実際の描画と同じシーン・経路を使った無限ループGIFで、README上では操作できません。GIFの直下に「詳しくはこちら」でPagesへのリンクを表示します。リンク先は `data/profile.yaml` の `site.origin` と `site.base_path` です。生成結果は `build/profile/README.md` で確認してください。
+更新手順：`templates/readme.md` を編集し、`npm run profile:render` で `build/profile/README.md` を生成して確認し、`PROFILE_APPLY=1 npm run profile:apply` で `README.md` に反映します。`README.md` だけを編集すると、次の反映で上書きされます。
 
-GIFの再生成：Astroの開発サーバーを起動した状態で `npm run profile:animate` を実行します。PlaywrightのChromiumと、Python 3のPillowが必要です。別のポートの場合は `ANIMATION_BASE_URL` を指定します。GIFは `build/profile/assets/generated/profile-demo.gif` に生成されます。GIFの生成後、README生成・確認・適用を行ってください。
+3Dデモ（`assets/generated/profile-demo.gif`）はREADMEでは使いません。READMEにはポートフォリオへのリンクだけを置きます。

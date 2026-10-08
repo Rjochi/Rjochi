@@ -1,3 +1,5 @@
+<!-- README.md is a copy of templates/readme.md. Edit templates/readme.md, then run npm run profile:render and PROFILE_APPLY=1 npm run profile:apply. -->
+
 <p align="left">
   <a href="https://github.com/Rjochi">
     <img height="20" src="https://komarev.com/ghpvc/?username=Rjochi" />
@@ -15,11 +17,7 @@
 
 <img src="https://skillicons.dev/icons?i=ros,py,cpp,docker,vscode,ubuntu,opencv,latex,arduino,github&perline=10" alt="使用技術: ROS, Python, C++, Docker, VSCode, Ubuntu, OpenCV, LaTeX, Arduino, GitHub">
 
-![障害物を避ける経路探索・曲線化・移動の3Dデモ](./assets/generated/profile-demo.gif)
-
-[詳しくはこちら](https://rjochi.github.io/Rjochi/)
-
-経路探索・曲線化・移動の流れを示す幾何学デモです。推力や機体特性を考慮した軌道生成・制御は再現していません。
+[ポートフォリオはこちら](https://rjochi.github.io/Rjochi/)
 
 ## 代表的な取り組み
 
