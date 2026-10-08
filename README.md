@@ -13,6 +13,8 @@
 
 所属チーム: [Team SOBITS](https://github.com/TeamSOBITS)
 
+<img src="https://skillicons.dev/icons?i=ros,py,cpp,docker,vscode,ubuntu,opencv,latex,arduino,github&perline=10" alt="使用技術: ROS, Python, C++, Docker, VSCode, Ubuntu, OpenCV, LaTeX, Arduino, GitHub">
+
 ![障害物を避ける経路探索・曲線化・移動の3Dデモ](./assets/generated/profile-demo.gif)
 
 [詳しくはこちら](https://rjochi.github.io/Rjochi/)
